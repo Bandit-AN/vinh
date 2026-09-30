@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VFS Private Training — 1:1 Personal Training</title>
+  <meta name="description" content="Private 1-on-1 personal training, stretch therapy and online coaching in District 6, Ho Chi Minh City." />
+  <meta name="theme-color" content="#0b0b0c" />
+  <link rel="icon" href="assets/img/brand/logo-footer.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ============ LANGUAGE PICKER (shows on first visit) ============ -->
+  <div class="lang-modal" id="langModal" role="dialog" aria-modal="true" aria-labelledby="langTitle">
+    <div class="lang-modal__card">
+      <img src="assets/img/brand/logo.png" alt="VFS Private Training" />
+      <h2 id="langTitle">Chọn ngôn ngữ của bạn<br><span style="color:var(--muted);font-weight:600">Choose your language</span></h2>
+      <p>Bạn có thể đổi bất cứ lúc nào ở góc trên · Change anytime in the top corner</p>
+      <div class="lang-modal__options">
+        <button class="lang-option" data-set-lang="vi">
+          <span class="flag" aria-hidden="true">🇻🇳</span>
+          <strong>Tiếng Việt</strong>
+          <small>Vietnamese</small>
+        </button>
+        <button class="lang-option" data-set-lang="en">
+          <span class="flag" aria-hidden="true">🇬🇧</span>
+          <strong>English</strong>
+          <small>Tiếng Anh</small>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="wrap nav__inner">
+      <a href="#top" class="nav__logo" aria-label="VFS Private Training — home">
+        <img src="assets/img/brand/logo.png" alt="VFS Private Training" />
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#programs" data-i18n="nav.programs">Programs</a></li>
+        <li><a href="#results" data-i18n="nav.results">Results</a></li>
+        <li><a href="#coaches" data-i18n="nav.coaches">Coaches</a></li>
+        <li><a href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
+        <li><a href="#meals" data-i18n="nav.meals">VHS Meal</a></li>
+        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+      </ul>
+      <div class="nav__right">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button data-set-lang="vi" aria-label="Tiếng Việt">VI</button>
+          <button data-set-lang="en" aria-label="English">EN</button>
+        </div>
+        <a href="#contact" class="btn btn--gold btn--sm nav__join" data-i18n="nav.join">Join Now</a>
+        <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero__media">
+        <!-- HERO IMAGE: swap for your best wide gym photo (min. 1920px wide) -->
+        <img src="assets/img/gallery/coaching-session.jpg" alt="A VFS coach guiding a member through a cable exercise" />
+      </div>
+      <div class="wrap hero__content">
+        <div class="hero__badge"><b>200+</b> <span data-i18n="hero.badge">members transformed</span></div>
+        <h1 data-i18n-html="hero.title">Train 1:1.<br><span class="gold">Change for good.</span></h1>
+        <p class="lead" data-i18n="hero.lead">A private studio where every session, program and meal plan is built around you.</p>
+        <div class="hero__ctas">
+          <a href="#contact" class="btn btn--gold" data-i18n="hero.cta1">Book a free consult</a>
+          <a href="#results" class="btn btn--ghost" data-i18n="hero.cta2">See real results</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section class="stats">
+      <div class="wrap stats__grid">
+        <div class="stat"><strong>200<em>+</em></strong><span data-i18n="stats.1">members transformed</span></div>
+        <div class="stat"><strong>3–5</strong><span data-i18n="stats.2">members per time slot</span></div>
+        <div class="stat"><strong>100<em>%</em></strong><span data-i18n="stats.3">personalized program & nutrition</span></div>
+        <div class="stat"><strong>7</strong><span data-i18n="stats.4">certified coaches on the team</span></div>
+      </div>
+    </section>
+
+    <!-- ============ INTRO / FOUNDER ============ -->
+    <section class="section">
+      <div class="wrap intro">
+        <div class="intro__media reveal">
+          <img src="assets/img/gallery/founder.jpg" alt="Võ Phúc Vinh, founder of VFS Private Training, speaking at a workshop" />
+          <div class="intro__tag">
+            <strong>Võ Phúc Vinh</strong>
+            <span data-i18n="intro.role">Founder & CEO</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="intro.eyebrow">Our story</p>
+          <h2 data-i18n-html="intro.title">Built by someone who's <span class="gold">been there.</span></h2>
+          <blockquote data-i18n="intro.quote"></blockquote>
+          <div class="values">
+            <div><strong data-i18n="intro.v1t"></strong><span data-i18n="intro.v1"></span></div>
+            <div><strong data-i18n="intro.v2t"></strong><span data-i18n="intro.v2"></span></div>
+            <div><strong data-i18n="intro.v3t"></strong><span data-i18n="intro.v3"></span></div>
+            <div><strong data-i18n="intro.v4t"></strong><span data-i18n="intro.v4"></span></div>
+          </div>
+          <a href="#contact" class="btn btn--gold" data-i18n="intro.cta">Start your transformation</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROGRAMS (photo cards) ============ -->
+    <section class="section section--alt" id="programs">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow" data-i18n="prog.eyebrow">Programs</p>
+            <h2 data-i18n="prog.title">Three ways to train with us</h2>
+            <p class="lead" data-i18n="prog.lead"></p>
+          </div>
+        </div>
+        <div class="cards">
+          <article class="card card--lg reveal">
+            <img src="assets/img/gallery/service-pt.jpg" alt="Coach supervising a member's dumbbell exercise" style="object-position:center 30%" />
+            <span class="card__num">01</span>
+            <div class="card__body">
+              <h3 data-i18n="prog.pt.t">1-on-1 Personal Training</h3>
+              <p data-i18n="prog.pt.d"></p>
+              <a href="#contact" class="link-arrow" data-service="pt"><b data-i18n="prog.cta">Register</b> <span>→</span></a>
+            </div>
+          </article>
+          <article class="card card--md reveal">
+            <img src="assets/img/gallery/service-stretch.jpg" alt="Coach performing assisted stretch therapy" />
+            <span class="card__num">02</span>
+            <div class="card__body">
+              <h3 data-i18n="prog.st.t">Stretch Therapy</h3>
+              <p data-i18n="prog.st.d"></p>
+              <a href="#contact" class="link-arrow" data-service="stretch"><b data-i18n="prog.cta">Register</b> <span>→</span></a>
+            </div>
+          </article>
+          <article class="card card--half reveal">
+            <img src="assets/img/gallery/service-online.jpg" alt="Member following an online coaching session on a laptop" />
+            <span class="card__num">03</span>
+            <div class="card__body">
+              <h3 data-i18n="prog.on.t">Online Coaching</h3>
+              <p data-i18n="prog.on.d"></p>
+              <a href="#contact" class="link-arrow" data-service="online"><b data-i18n="prog.cta">Register</b> <span>→</span></a>
+            </div>
+          </article>
+          <article class="card card--half reveal">
+            <img src="assets/img/gallery/workshop-2.jpg" alt="Members attending a VFS workshop in the studio" />
+            <span class="card__num">+</span>
+            <div class="card__body">
+              <h3 data-i18n="prog.ws.t">Workshops & community</h3>
+              <p data-i18n="prog.ws.d"></p>
+              <a href="https://www.tiktok.com/@vfsprivatetraining" target="_blank" rel="noopener" class="link-arrow"><b data-i18n="prog.ws.cta">Follow on TikTok</b> <span>→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RESULTS / CASE STUDIES ============ -->
+    <section class="section" id="results">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow" data-i18n="res.eyebrow">Case studies</p>
+            <h2 data-i18n-html="res.title">Real members.<br>Real results.</h2>
+            <p class="lead" data-i18n="res.lead"></p>
+          </div>
+        </div>
+        <!-- Rendered from js/content.js → cases -->
+        <div class="cases" id="cases"></div>
+
+        <p class="eyebrow" style="margin-top:72px" data-i18n="res.more">More transformations</p>
+        <!-- Rendered from js/content.js → results -->
+        <div class="results-strip" id="resultsStrip"></div>
+
+        <div class="results-cta reveal">
+          <p data-i18n="res.ctaText">Your before photo is the hardest one to take.</p>
+          <a href="#contact" class="btn btn--gold" data-i18n="res.cta">Book your assessment</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COACHES ============ -->
+    <section class="section section--alt" id="coaches">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow" data-i18n="team.eyebrow">Meet the team</p>
+            <h2 data-i18n-html="team.title">Professional,<br>experienced coaches</h2>
+            <p class="lead" data-i18n="team.lead"></p>
+          </div>
+          <a href="#contact" class="btn btn--ghost" data-i18n="team.cta">Train with our coaches</a>
+        </div>
+        <!-- Rendered from js/content.js → coaches (lead coach gets the large card) -->
+        <div id="teamLead"></div>
+        <div class="team" id="team"></div>
+        <div class="certs reveal">
+          <span data-i18n="team.certs">Certified by</span>
+          <span class="chip">NCSF</span>
+          <span class="chip">Poliquin</span>
+          <span class="chip" data-i18n="team.cert3">Vietnam Weightlifting & Bodybuilding Federation</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section class="section" id="pricing">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow" data-i18n="price.eyebrow">Membership</p>
+            <h2 data-i18n="price.title">Choose your plan</h2>
+            <p class="lead" data-i18n="price.lead"></p>
+          </div>
+        </div>
+        <!-- Rendered from js/content.js → plans + perks -->
+        <div class="plans" id="plans"></div>
+        <p class="plans__note" data-i18n="price.note"></p>
+      </div>
+    </section>
+
+    <!-- ============ CAFÉ / RECOVERY / RETAIL ============ -->
+    <section class="section section--alt" id="meals">
+      <div class="wrap">
+        <!-- Café: VHS Meal -->
+        <div class="split">
+          <div class="split__media reveal">
+            <img class="tall" src="assets/img/meals/chaca.jpg" alt="VHS Meal fish cakes" />
+            <img src="assets/img/meals/ucga.jpg" alt="Sous-vide chicken breast" />
+            <img src="assets/img/meals/pumpkin-cake.jpg" alt="Pumpkin cake" />
+          </div>
+          <div class="reveal">
+            <p class="eyebrow" data-i18n="cafe.eyebrow">VHS Meal · Café</p>
+            <h2 data-i18n-html="cafe.title"></h2>
+            <p class="lead" style="margin-top:20px" data-i18n="cafe.lead"></p>
+            <div class="menu-tags">
+              <span data-i18n="cafe.t1"></span><span data-i18n="cafe.t2"></span><span data-i18n="cafe.t3"></span>
+              <span data-i18n="cafe.t4"></span><span data-i18n="cafe.t5"></span><span data-i18n="cafe.t6"></span>
+            </div>
+            <a href="https://zalo.me/0898462618" target="_blank" rel="noopener" class="btn btn--gold" data-i18n="cafe.cta">Order via Zalo</a>
+          </div>
+        </div>
+
+        <!-- Recovery: stretch therapy -->
+        <div class="split split--rev">
+          <div class="split__media split__media--single reveal">
+            <img src="assets/img/gallery/coach-member.jpg" alt="Coach and member at the studio" style="aspect-ratio:4/3;object-position:center 25%" />
+          </div>
+          <div class="reveal">
+            <p class="eyebrow" data-i18n="rec.eyebrow">Recovery</p>
+            <h2 data-i18n="rec.title"></h2>
+            <p class="lead" style="margin:20px 0 32px" data-i18n="rec.lead"></p>
+            <a href="#contact" class="btn btn--ghost" data-service="stretch" data-i18n="rec.cta">Book stretch therapy</a>
+          </div>
+        </div>
+
+        <!-- Retail: PLACEHOLDER — fill in or delete this whole block -->
+        <div class="split">
+          <div class="split__media split__media--single reveal">
+            <div class="ph-box" data-i18n="shop.img">[PLACEHOLDER: retail / merch photo]</div>
+          </div>
+          <div class="reveal">
+            <p class="eyebrow" data-i18n="shop.eyebrow">Retail</p>
+            <h2 data-i18n="shop.title">Gear & supplements</h2>
+            <p class="lead" style="margin-top:20px" data-i18n-html="shop.lead"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOCATION & HOURS ============ -->
+    <section class="section" id="visit">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow" data-i18n="visit.eyebrow">Visit us</p>
+            <h2 data-i18n="visit.title">Find the studio</h2>
+          </div>
+        </div>
+        <div class="visit">
+          <div class="visit__info reveal">
+            <dl>
+              <div>
+                <dt data-i18n="visit.address">Address</dt>
+                <dd>64B3 Bà Hom, Phường 13, Quận 6, TP. Hồ Chí Minh</dd>
+              </div>
+              <div>
+                <dt data-i18n="visit.phone">Hotline / Zalo</dt>
+                <dd><a href="tel:+84898462618">0898 462 618</a></dd>
+              </div>
+              <div>
+                <dt data-i18n="visit.email">Email</dt>
+                <dd><a href="mailto:vophucvinh582@gmail.com">vophucvinh582@gmail.com</a></dd>
+              </div>
+              <div>
+                <dt data-i18n="visit.hours">Opening hours</dt>
+                <dd>
+                  <!-- HOURS: not listed on the current site — replace the placeholders -->
+                  <table class="hours">
+                    <tr><td data-i18n="visit.weekdays">Monday – Friday</td><td><span class="ph" data-i18n="visit.hoursPh">[__:__ – __:__]</span></td></tr>
+                    <tr><td data-i18n="visit.sat">Saturday</td><td><span class="ph" data-i18n="visit.hoursPh">[__:__ – __:__]</span></td></tr>
+                    <tr><td data-i18n="visit.sun">Sunday</td><td><span class="ph" data-i18n="visit.hoursPh">[__:__ – __:__]</span></td></tr>
+                  </table>
+                </dd>
+              </div>
+            </dl>
+            <a href="https://www.google.com/maps/search/?api=1&query=64B3+B%C3%A0+Hom%2C+Ph%C6%B0%E1%BB%9Dng+13%2C+Qu%E1%BA%ADn+6%2C+H%E1%BB%93+Ch%C3%AD+Minh" target="_blank" rel="noopener" class="btn btn--gold" data-i18n="visit.directions">Get directions</a>
+          </div>
+          <div class="visit__map reveal">
+            <iframe title="Map — VFS Private Training" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=64B3%20B%C3%A0%20Hom%2C%20Ph%C6%B0%E1%BB%9Dng%2013%2C%20Qu%E1%BA%ADn%206%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&z=16&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section section--alt" id="faq">
+      <div class="wrap faq">
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="faq.eyebrow">FAQ</p>
+          <h2 data-i18n="faq.title">Questions, answered.</h2>
+          <p class="lead" style="margin:20px 0 32px" data-i18n="faq.lead"></p>
+          <a href="https://zalo.me/0898462618" target="_blank" rel="noopener" class="btn btn--ghost" data-i18n="contact.zalo">Message on Zalo</a>
+        </div>
+        <div class="faq__list reveal">
+          <details open><summary><span data-i18n="faq.q1"></span><i aria-hidden="true"></i></summary><p data-i18n="faq.a1"></p></details>
+          <details><summary><span data-i18n="faq.q2"></span><i aria-hidden="true"></i></summary><p data-i18n="faq.a2"></p></details>
+          <details><summary><span data-i18n="faq.q3"></span><i aria-hidden="true"></i></summary><p data-i18n="faq.a3"></p></details>
+          <details><summary><span data-i18n="faq.q4"></span><i aria-hidden="true"></i></summary><p data-i18n="faq.a4"></p></details>
+          <details><summary><span data-i18n="faq.q5"></span><i aria-hidden="true"></i></summary><p data-i18n-html="faq.a5"></p></details>
+          <details><summary><span data-i18n="faq.q6"></span><i aria-hidden="true"></i></summary><p data-i18n-html="faq.a6"></p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT / FINAL CTA ============ -->
+    <section class="section contact" id="contact">
+      <div class="contact__bg"><img src="assets/img/gallery/members.jpg" alt="" /></div>
+      <div class="wrap contact__grid">
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="contact.eyebrow">Get started</p>
+          <h2 data-i18n-html="contact.title">Your first step<br>takes 2 minutes.</h2>
+          <p class="lead" style="margin-top:20px" data-i18n="contact.lead"></p>
+          <div class="contact__quick">
+            <a href="tel:+84898462618" class="btn btn--gold"><span data-i18n="contact.call">Call now</span> · 0898 462 618</a>
+            <a href="https://zalo.me/0898462618" target="_blank" rel="noopener" class="btn btn--ghost" data-i18n="contact.zalo">Message on Zalo</a>
+          </div>
+        </div>
+
+        <!-- LEAD FORM — set FORM_ENDPOINT in js/main.js (Formspree, Google Apps Script, CRM…) -->
+        <form class="form reveal" id="leadForm" novalidate>
+          <h3 data-i18n="form.title">Claim your member offer</h3>
+          <label><span data-i18n="form.name">Full name</span>
+            <input name="name" autocomplete="name" required />
+          </label>
+          <label><span data-i18n="form.phone">Phone number</span>
+            <input name="phone" type="tel" autocomplete="tel" inputmode="tel" required />
+          </label>
+          <label><span data-i18n="form.email">Email</span>
+            <input name="email" type="email" autocomplete="email" />
+          </label>
+          <label><span data-i18n="form.service">Service</span>
+            <select name="service" id="serviceSelect" required>
+              <option value="" data-i18n="form.pick">Choose a service</option>
+              <option value="pt">1 On 1 Personal Training</option>
+              <option value="stretch" data-i18n="prog.st.t">Stretch Therapy</option>
+              <option value="online">Coaching Online</option>
+            </select>
+          </label>
+          <button type="submit" class="btn btn--gold btn--block" data-i18n="form.submit">Send my request</button>
+          <p class="form__note" data-i18n="form.note"></p>
+          <div class="form__success" role="status" data-i18n="form.success"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__grid">
+        <div>
+          <img src="assets/img/brand/logo.png" alt="VFS Private Training" />
+          <p data-i18n="footer.tag"></p>
+        </div>
+        <div>
+          <h4 data-i18n="footer.services">Services</h4>
+          <ul>
+            <li><a href="#programs" data-i18n="prog.pt.t"></a></li>
+            <li><a href="#programs" data-i18n="prog.st.t"></a></li>
+            <li><a href="#programs" data-i18n="prog.on.t"></a></li>
+            <li><a href="#meals">VHS Meal</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footer.explore">Explore</h4>
+          <ul>
+            <li><a href="#results" data-i18n="nav.results"></a></li>
+            <li><a href="#coaches" data-i18n="nav.coaches"></a></li>
+            <li><a href="#pricing" data-i18n="nav.pricing"></a></li>
+            <li><a href="#faq" data-i18n="nav.faq"></a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footer.contact">Contact</h4>
+          <ul>
+            <li>64B3 Bà Hom, P.13, Q.6, TP.HCM</li>
+            <li><a href="tel:+84898462618">0898 462 618</a></li>
+            <li><a href="https://www.facebook.com/VFSPrivateTraining" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.tiktok.com/@vfsprivatetraining" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.youtube.com/@VINFINITYchannel" target="_blank" rel="noopener">YouTube</a></li>
+            <!-- Instagram: the current site links to instagram.com with no handle -->
+            <li><span class="ph">[PLACEHOLDER: Instagram handle]</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year"></span> VFS Private Training. <span data-i18n="footer.rights">All rights reserved.</span></span>
+        <span>vfsprivatetraining.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky CTA bar (mobile only) -->
+  <div class="mobile-cta" id="mobileCta">
+    <a href="https://zalo.me/0898462618" target="_blank" rel="noopener" class="btn btn--ghost" data-i18n="mcta.zalo">Zalo</a>
+    <a href="#contact" class="btn btn--gold" data-i18n="mcta.join">Join Now</a>
+  </div>
+
+  <!-- Lightbox for transformation photos -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__btn lightbox__close" aria-label="Close">×</button>
+    <button class="lightbox__btn lightbox__prev" aria-label="Previous">‹</button>
+    <img alt="" />
+    <button class="lightbox__btn lightbox__next" aria-label="Next">›</button>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/content.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
