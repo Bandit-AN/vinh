@@ -29,32 +29,23 @@
   const t = (key) => (I18N[lang] && I18N[lang][key]) || I18N.en[key] || "";
   const pick = (v) => (v && typeof v === "object" ? v[lang] || v.en : v);
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  // Values written as "[…]" in content.js are placeholders — highlight them.
-  const val = (v) => {
-    const s = pick(v);
-    return /^\[.*\]$/.test(s) ? `<span class="ph">${esc(s)}</span>` : esc(s);
-  };
 
   /* ---------- Render: case studies ---------- */
   function renderCases() {
     $("#cases").innerHTML = DATA.cases.map((c, i) => `
       <article class="case reveal">
-        <button class="case__img" data-lightbox="case" data-index="${i}" aria-label="${esc(pick(c.goal))}">
-          <img src="${c.photo}" alt="${esc(pick(c.goal))}: ${c.before} → ${c.after}" loading="lazy" />
+        <button class="case__img" data-lightbox="case" data-index="${i}" aria-label="${esc(c.name)}">
+          <img src="${c.photo}" alt="${esc(c.name)} — before and after" loading="lazy" />
         </button>
         <div class="case__body">
-          <div class="case__meta"><span class="chip">${esc(pick(c.goal))}</span></div>
-          <h3>${val(c.name)}</h3>
+          ${c.goal ? `<div class="case__meta"><span class="chip">${esc(pick(c.goal))}</span></div>` : ""}
+          <h3>${esc(c.name)}</h3>
+          ${c.before ? `
           <div class="case__row">
             <div><small>${t("res.before")}</small><b>${c.before}</b></div>
             <div><small>${t("res.after")}</small><b>${c.after}</b></div>
             <div><small>${t("res.change")}</small><b class="gold">${esc(pick(c.change))}</b></div>
-          </div>
-          <div class="case__row" style="grid-template-columns:1fr 1fr">
-            <div><small>${t("res.duration")}</small><b>${val(c.weeks)}</b></div>
-            <div><small>${t("res.coach")}</small><b>${val(c.coach)}</b></div>
-          </div>
-          <p class="case__quote">${val(c.quote)}</p>
+          </div>` : ""}
         </div>
       </article>`).join("");
 
@@ -76,7 +67,6 @@
           <p class="eyebrow">${esc(pick(lead.role))}</p>
           <h2 style="font-size:clamp(32px,4vw,48px)">${esc(lead.name)}</h2>
           <span class="role">VFS Private Training</span>
-          <p>${val(lead.bio)}</p>
           <a href="#contact" class="btn btn--gold" style="margin-top:12px">${t("team.cta")}</a>
         </div>
       </div>` : "";
@@ -87,7 +77,6 @@
         <div class="coach__body">
           <h3>${esc(c.name)}</h3>
           <span class="coach__role">${esc(pick(c.role))}</span>
-          <p>${val(c.bio)}</p>
         </div>
       </article>`).join("");
   }
@@ -105,6 +94,50 @@
         <p class="plan__gift">${esc(pick(p.gift))}</p>
         <a href="#contact" class="btn ${p.featured ? "btn--gold" : "btn--ghost"} btn--block" data-service="pt">${t("price.cta")}</a>
       </article>`).join("");
+  }
+
+  /* ---------- Render: VHS Meal menu ---------- */
+  const MENU_PREVIEW = 12;
+  let menuCat = "all";
+  let menuOpen = false;
+  function renderMeals() {
+    const items = DATA.meals.filter((m) => menuCat === "all" || m.cat === menuCat);
+    const shown = menuOpen || menuCat !== "all" ? items : items.slice(0, MENU_PREVIEW);
+    $("#menuGrid").innerHTML = shown.map((m) => `
+      <figure class="dish">
+        <div class="dish__img"><img src="${m.photo}" alt="${esc(m.name)}" loading="lazy" /></div>
+        <figcaption>${esc(m.name)}</figcaption>
+      </figure>`).join("");
+    $$(".menu-tabs button").forEach((b) => b.setAttribute("aria-selected", b.dataset.cat === menuCat));
+    const more = $("#menuMore");
+    more.parentElement.hidden = menuCat !== "all";
+    more.textContent = t(menuOpen ? "cafe.less" : "cafe.more");
+  }
+  $$(".menu-tabs button").forEach((b) => b.addEventListener("click", () => {
+    menuCat = b.dataset.cat;
+    renderMeals();
+  }));
+  $("#menuMore").addEventListener("click", () => {
+    menuOpen = !menuOpen;
+    renderMeals();
+    if (!menuOpen) $("#meals").scrollIntoView();
+  });
+
+  /* ---------- Country dropdown: US & Vietnam first, then A–Z ---------- */
+  const COUNTRIES = "AF AX AL DZ AS AD AO AI AQ AG AR AM AW AU AT AZ BS BH BD BB BY BE BZ BJ BM BT BO BQ BA BW BR IO BN BG BF BI CV KH CM CA KY CF TD CL CN CX CC CO KM CG CD CK CR CI HR CU CW CY CZ DK DJ DM DO EC EG SV GQ ER EE SZ ET FK FO FJ FI FR GF PF GA GM GE DE GH GI GR GL GD GP GU GT GG GN GW GY HT VA HN HK HU IS IN ID IR IQ IE IM IL IT JM JP JE JO KZ KE KI KP KR KW KG LA LV LB LS LR LY LI LT LU MO MG MW MY MV ML MT MH MQ MR MU YT MX FM MD MC MN ME MS MA MZ MM NA NR NP NL NC NZ NI NE NG NU NF MK MP NO OM PK PW PS PA PG PY PE PH PN PL PT PR QA RE RO RU RW BL SH KN LC MF PM VC WS SM ST SA SN RS SC SL SG SX SK SI SB SO ZA GS SS ES LK SD SR SJ SE CH SY TW TJ TZ TH TL TG TK TO TT TN TR TM TC TV UG UA AE GB UM UY UZ VU VE VG VI WF EH YE ZM ZW".split(" ");
+  function renderCountries() {
+    const sel = $("#countrySelect");
+    const current = sel.value;
+    let names;
+    try { names = new Intl.DisplayNames([lang], { type: "region" }); } catch (e) { names = { of: (c) => c }; }
+    const opt = (code) => `<option value="${code}">${esc(names.of(code))}</option>`;
+    const rest = COUNTRIES.map((c) => [c, names.of(c)]).sort((a, b) => a[1].localeCompare(b[1], lang));
+    sel.innerHTML =
+      `<option value="">${t("form.countryPick")}</option>` +
+      opt("US") + opt("VN") +
+      `<option disabled>──────────</option>` +
+      rest.map(([c]) => opt(c)).join("");
+    sel.value = current;
   }
 
   /* ---------- Language ---------- */
@@ -126,6 +159,8 @@
     renderCases();
     renderCoaches();
     renderPlans();
+    renderMeals();
+    renderCountries();
     observeReveals();
   }
 
@@ -233,11 +268,13 @@
   const form = $("#leadForm");
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const bad = $$("[required]", form).filter((f) => !f.value.trim());
+    const bad = $$("input, select", form).filter((f) => !f.value.trim() || !f.checkValidity());
+    $$("input, select", form).forEach((f) => f.classList.toggle("is-invalid", bad.includes(f)));
     if (bad.length) { bad[0].focus(); return; }
 
     const data = Object.fromEntries(new FormData(form));
     data.serviceLabel = $("#serviceSelect").selectedOptions[0].textContent;
+    data.countryLabel = $("#countrySelect").selectedOptions[0].textContent;
     data.lang = lang;
 
     if (FORM_ENDPOINT) {
@@ -253,7 +290,7 @@
         return;
       }
     } else {
-      const body = `Name: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nService: ${data.serviceLabel}`;
+      const body = `Name: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nCountry: ${data.countryLabel}\nService: ${data.serviceLabel}`;
       window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Website enquiry — " + data.name)}&body=${encodeURIComponent(body)}`;
     }
     form.classList.add("is-sent");
@@ -262,6 +299,9 @@
 
   /* ---------- Init ---------- */
   $("#year").textContent = new Date().getFullYear();
+  // ?lang=en or ?lang=vi in the URL picks the language and skips the popup (handy for shared links)
+  const fromUrl = new URLSearchParams(location.search).get("lang");
+  if (fromUrl && I18N[fromUrl]) store.set(LANG_KEY, fromUrl);
   const saved = store.get(LANG_KEY);
   applyLang(saved || DEFAULT_LANG);
   if (!saved) openLangModal();

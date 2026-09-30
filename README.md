@@ -28,18 +28,21 @@ Then open http://localhost:5173. To deploy, upload the folder to any static host
 - The VI / EN toggle in the top-right corner switches language at any time.
 - Clear site data to see the popup again.
 
-## Still to fill in (placeholders)
+## Still to fill in
 
-Placeholders show on the page as gold dashed boxes. To find them all, search for `[` in `js/i18n.js` and `js/content.js`, and for `PLACEHOLDER` / `class="ph"` in `index.html`.
+1. **Lead form backend.** Set `FORM_ENDPOINT` in `js/main.js` (e.g. Formspree or a Google Apps Script webhook). Until then, submitting the form opens a pre-filled email to `vophucvinh582@gmail.com`. Every field is required, and the country list shows United States and Vietnam first.
+2. **FAQ 5 and 6.** Online coaching price/format and the trial & cancellation policy are still placeholders (gold dashed boxes). Search `PLACEHOLDER` in `js/i18n.js`.
+3. **Case studies (optional).** The featured cards show name + photo. Add `goal`, `before`, `after` and `change` to an entry in `js/content.js` to show the stats row.
 
-1. **Lead form backend.** Set `FORM_ENDPOINT` in `js/main.js` (e.g. Formspree or a Google Apps Script webhook). Until then, submitting the form opens a pre-filled email to `vophucvinh582@gmail.com`.
-2. **Opening hours.** The current site doesn't list them (`visit.hoursPh`).
-3. **Case studies.** Goals and before/after weights come from the site's transformation photos. Member names, duration, coach and quote are placeholders, so get members' consent before adding names.
-4. **Coach bios.** The current site lists names and roles only.
-5. **Retail block.** Describe it and add a photo, or delete the block in `index.html` (marked `Retail: PLACEHOLDER`).
-6. **Online coaching** price/format, and the **trial & cancellation policy** (FAQ 5 and 6).
-7. **Instagram handle.** The current site links to instagram.com with no account.
-8. **Form reply time** (`form.note`: "within [__ hours]").
+## Content sources
+
+- **VHS Meal menu:** all 44 dishes and photos from vfsprivatetraining.com/vhs-meal, grouped into categories in `js/content.js` → `meals`. The site lists no prices ("Liên hệ"), so the menu sends people to Zalo.
+- **Hours:** Mon–Fri 6:00–22:00, Sat 6:00–21:00, Sun closed.
+- **Transformations:** the 3 featured members (Hữu Tình, Anh Minh, Khương Nguyễn) plus 20 more photos in the scrolling strip.
+
+## Sharing a specific language
+
+Add `?lang=en` or `?lang=vi` to the URL to open the site in that language and skip the popup.
 
 ## Notes
 

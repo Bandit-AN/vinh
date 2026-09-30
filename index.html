@@ -228,30 +228,32 @@
       </div>
     </section>
 
-    <!-- ============ CAFÉ / RECOVERY / RETAIL ============ -->
+    <!-- ============ VHS MEAL + RECOVERY ============ -->
     <section class="section section--alt" id="meals">
       <div class="wrap">
-        <!-- Café: VHS Meal -->
-        <div class="split">
-          <div class="split__media reveal">
-            <img class="tall" src="assets/img/meals/chaca.jpg" alt="VHS Meal fish cakes" />
-            <img src="assets/img/meals/ucga.jpg" alt="Sous-vide chicken breast" />
-            <img src="assets/img/meals/pumpkin-cake.jpg" alt="Pumpkin cake" />
-          </div>
-          <div class="reveal">
+        <!-- VHS Meal menu — items rendered from js/content.js → meals -->
+        <div class="section-head reveal">
+          <div>
             <p class="eyebrow" data-i18n="cafe.eyebrow">VHS Meal · Café</p>
             <h2 data-i18n-html="cafe.title"></h2>
-            <p class="lead" style="margin-top:20px" data-i18n="cafe.lead"></p>
-            <div class="menu-tags">
-              <span data-i18n="cafe.t1"></span><span data-i18n="cafe.t2"></span><span data-i18n="cafe.t3"></span>
-              <span data-i18n="cafe.t4"></span><span data-i18n="cafe.t5"></span><span data-i18n="cafe.t6"></span>
-            </div>
-            <a href="https://zalo.me/0898462618" target="_blank" rel="noopener" class="btn btn--gold" data-i18n="cafe.cta">Order via Zalo</a>
+            <p class="lead" data-i18n="cafe.lead"></p>
           </div>
+          <a href="https://zalo.me/0898462618" target="_blank" rel="noopener" class="btn btn--gold" data-i18n="cafe.cta">Order via Zalo</a>
         </div>
+        <div class="menu-tabs reveal" role="tablist" aria-label="Menu categories">
+          <button role="tab" data-cat="all" data-i18n="cafe.all">All</button>
+          <button role="tab" data-cat="protein" data-i18n="cafe.protein">Fish cakes & chicken</button>
+          <button role="tab" data-cat="rice" data-i18n="cafe.rice">Rice & bowls</button>
+          <button role="tab" data-cat="noodles" data-i18n="cafe.noodles">Noodles & soups</button>
+          <button role="tab" data-cat="veg" data-i18n="cafe.veg">Vegetarian</button>
+          <button role="tab" data-cat="bakery" data-i18n="cafe.bakery">Bakery</button>
+          <button role="tab" data-cat="snacks" data-i18n="cafe.snacks">Snacks & drinks</button>
+        </div>
+        <div class="menu-grid" id="menuGrid"></div>
+        <div class="menu-more"><button class="btn btn--ghost" id="menuMore" data-i18n="cafe.more">See full menu</button></div>
 
         <!-- Recovery: stretch therapy -->
-        <div class="split split--rev">
+        <div class="split split--rev" style="margin-top:clamp(80px,10vw,130px)">
           <div class="split__media split__media--single reveal">
             <img src="assets/img/gallery/coach-member.jpg" alt="Coach and member at the studio" style="aspect-ratio:4/3;object-position:center 25%" />
           </div>
@@ -260,18 +262,6 @@
             <h2 data-i18n="rec.title"></h2>
             <p class="lead" style="margin:20px 0 32px" data-i18n="rec.lead"></p>
             <a href="#contact" class="btn btn--ghost" data-service="stretch" data-i18n="rec.cta">Book stretch therapy</a>
-          </div>
-        </div>
-
-        <!-- Retail: PLACEHOLDER — fill in or delete this whole block -->
-        <div class="split">
-          <div class="split__media split__media--single reveal">
-            <div class="ph-box" data-i18n="shop.img">[PLACEHOLDER: retail / merch photo]</div>
-          </div>
-          <div class="reveal">
-            <p class="eyebrow" data-i18n="shop.eyebrow">Retail</p>
-            <h2 data-i18n="shop.title">Gear & supplements</h2>
-            <p class="lead" style="margin-top:20px" data-i18n-html="shop.lead"></p>
           </div>
         </div>
       </div>
@@ -304,11 +294,10 @@
               <div>
                 <dt data-i18n="visit.hours">Opening hours</dt>
                 <dd>
-                  <!-- HOURS: not listed on the current site — replace the placeholders -->
                   <table class="hours">
-                    <tr><td data-i18n="visit.weekdays">Monday – Friday</td><td><span class="ph" data-i18n="visit.hoursPh">[__:__ – __:__]</span></td></tr>
-                    <tr><td data-i18n="visit.sat">Saturday</td><td><span class="ph" data-i18n="visit.hoursPh">[__:__ – __:__]</span></td></tr>
-                    <tr><td data-i18n="visit.sun">Sunday</td><td><span class="ph" data-i18n="visit.hoursPh">[__:__ – __:__]</span></td></tr>
+                    <tr><td data-i18n="visit.weekdays">Monday – Friday</td><td data-i18n="visit.wkHours">6:00 AM – 10:00 PM</td></tr>
+                    <tr><td data-i18n="visit.sat">Saturday</td><td data-i18n="visit.satHours">6:00 AM – 9:00 PM</td></tr>
+                    <tr><td data-i18n="visit.sun">Sunday</td><td class="closed" data-i18n="visit.closed">Closed</td></tr>
                   </table>
                 </dd>
               </div>
@@ -367,7 +356,11 @@
             <input name="phone" type="tel" autocomplete="tel" inputmode="tel" required />
           </label>
           <label><span data-i18n="form.email">Email</span>
-            <input name="email" type="email" autocomplete="email" />
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+          <label><span data-i18n="form.country">Country</span>
+            <!-- Options filled by js/main.js: United States & Vietnam first, then all others -->
+            <select name="country" id="countrySelect" autocomplete="country" required></select>
           </label>
           <label><span data-i18n="form.service">Service</span>
             <select name="service" id="serviceSelect" required>
@@ -417,8 +410,7 @@
             <li>64B3 Bà Hom, P.13, Q.6, TP.HCM</li>
             <li><a href="tel:+84898462618">0898 462 618</a></li>
             <li><a href="https://www.facebook.com/VFSPrivateTraining" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.tiktok.com/@vfsprivatetraining" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.youtube.com/@VINFINITYchannel" target="_blank" rel="noopener">YouTube</a></li>
-            <!-- Instagram: the current site links to instagram.com with no handle -->
-            <li><span class="ph">[PLACEHOLDER: Instagram handle]</span></li>
+            <li><a href="https://www.instagram.com/vinfinityfitnessstudio/" target="_blank" rel="noopener">Instagram · @vinfinityfitnessstudio</a></li>
           </ul>
         </div>
       </div>
