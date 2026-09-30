@@ -31,14 +31,24 @@ Then open http://localhost:5173. To deploy, upload the folder to any static host
 ## Still to fill in
 
 1. **Lead form backend.** Set `FORM_ENDPOINT` in `js/main.js` (e.g. Formspree or a Google Apps Script webhook). Until then, submitting the form opens a pre-filled email to `vophucvinh582@gmail.com`. Every field is required, and the country list shows United States and Vietnam first.
-2. **FAQ 5 and 6.** Online coaching price/format and the trial & cancellation policy are still placeholders (gold dashed boxes). Search `PLACEHOLDER` in `js/i18n.js`.
-3. **Case studies (optional).** The featured cards show name + photo. Add `goal`, `before`, `after` and `change` to an entry in `js/content.js` to show the stats row.
+2. **Coaching application backend.** Set `APPLY_ENDPOINT` in `js/apply.js`. Until then, a submitted application opens a pre-filled email with all answers to `vophucvinh582@gmail.com`.
+3. **FAQ 6.** The trial & cancellation policy is still a placeholder (gold dashed box). Search `PLACEHOLDER` in `js/i18n.js`.
+4. **Case studies (optional).** The featured cards show name + photo. Add `goal`, `before`, `after` and `change` to an entry in `js/content.js` to show the stats row.
 
 ## Content sources
 
 - **VHS Meal menu:** all 44 dishes and photos from vfsprivatetraining.com/vhs-meal, grouped into categories in `js/content.js` → `meals`. The site lists no prices ("Liên hệ"), so the menu sends people to Zalo.
 - **Hours:** Mon–Fri 6:00–22:00, Sat 6:00–21:00, Sun closed.
 - **Transformations:** the 3 featured members (Hữu Tình, Anh Minh, Khương Nguyễn) plus 20 more photos in the scrolling strip.
+
+## 1-on-1 online coaching application
+
+A popup application form with one question at a time (the same questions as the Tally form), in both languages:
+
+- Opens from any element with `data-apply` (the Online Coaching card and FAQ 5) or from a link ending in `#apply`, e.g. `https://bandit-an.github.io/vinh/#apply`. Use that link in ads or a future VSL page.
+- Single-choice answers advance automatically. Keys A–F pick an option, and Ctrl/⌘+Enter continues from a text answer.
+- Progress is saved in the browser, so closing and reopening resumes where the visitor left off.
+- Edit questions and copy in `APPLY_STEPS` / `UI` at the top of `js/apply.js`.
 
 ## Sharing a specific language
 

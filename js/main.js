@@ -162,6 +162,7 @@
     renderMeals();
     renderCountries();
     observeReveals();
+    document.dispatchEvent(new CustomEvent("vfs:lang", { detail: lang }));
   }
 
   function setLang(next) {

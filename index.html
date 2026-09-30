@@ -149,7 +149,7 @@
             <div class="card__body">
               <h3 data-i18n="prog.on.t">Online Coaching</h3>
               <p data-i18n="prog.on.d"></p>
-              <a href="#contact" class="link-arrow" data-service="online"><b data-i18n="prog.cta">Register</b> <span>→</span></a>
+              <a href="#apply" class="link-arrow" data-apply><b data-i18n="apply.cta">Apply for online coaching</b> <span>→</span></a>
             </div>
           </article>
           <article class="card card--half reveal">
@@ -427,6 +427,15 @@
     <a href="#contact" class="btn btn--gold" data-i18n="mcta.join">Join Now</a>
   </div>
 
+  <!-- 1-on-1 online coaching application (logic + questions in js/apply.js) -->
+  <div class="apply" id="applyModal" role="dialog" aria-modal="true" aria-labelledby="applyQ" aria-hidden="true">
+    <div class="apply__card">
+      <div class="apply__progress" aria-hidden="true"><span></span></div>
+      <button class="apply__close" aria-label="Close">×</button>
+      <div class="apply__body"></div>
+    </div>
+  </div>
+
   <!-- Lightbox for transformation photos -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <button class="lightbox__btn lightbox__close" aria-label="Close">×</button>
@@ -438,5 +447,6 @@
   <script src="js/i18n.js"></script>
   <script src="js/content.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/apply.js"></script>
 </body>
 </html>
