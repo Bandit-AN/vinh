@@ -21,7 +21,7 @@ window.VFS_I18N = {
     "nav.join": "Join Now",
 
     "hero.badge": "members transformed",
-    "hero.title": "Train 1:1.<br><span class=\"gold\">Change for good.</span>",
+    "hero.title": "Change starts<br>with <span class=\"gold\">YOU</span>",
     "hero.lead": "A private studio where every session, program and meal plan is built around you — with a coach by your side the whole way.",
     "hero.cta1": "Book a free consult",
     "hero.cta2": "See real results",
@@ -134,8 +134,6 @@ window.VFS_I18N = {
     "faq.a4": "Yes. Our coaches hold internationally recognized certifications including NCSF and Poliquin, and certification from the Vietnam Weightlifting & Bodybuilding Federation.",
     "faq.q5": "Can I train with you if I'm not in Ho Chi Minh City?",
     "faq.a5": "Yes. If you're not in Ho Chi Minh City, you can work with us through our 1-on-1 online fitness coaching program: a personalized training and nutrition plan with regular check-ins from Vinh. <br><a href=\"#apply\" class=\"btn btn--gold btn--sm faq__cta\" data-apply>Apply for 1-on-1 online coaching</a>",
-    "faq.q6": "Can I try a session first? What's the cancellation policy?",
-    "faq.a6": "<span class=\"ph\">[PLACEHOLDER: trial session & cancellation / freeze policy]</span>",
 
     "contact.eyebrow": "Get started",
     "contact.title": "Your first step<br>takes 2 minutes.",
@@ -180,7 +178,7 @@ window.VFS_I18N = {
     "nav.join": "Đăng ký ngay",
 
     "hero.badge": "hội viên đã thay đổi",
-    "hero.title": "Tập 1:1.<br><span class=\"gold\">Thay đổi thật sự.</span>",
+    "hero.title": "Thay đổi<br>bắt đầu từ <span class=\"gold\">BẠN</span>",
     "hero.lead": "Nơi thay đổi vóc dáng & sức khỏe toàn diện — mỗi buổi tập, lộ trình và chế độ dinh dưỡng đều được thiết kế riêng cho bạn, với HLV đồng hành suốt chặng đường.",
     "hero.cta1": "Đăng ký tư vấn miễn phí",
     "hero.cta2": "Xem kết quả thật",
@@ -293,8 +291,6 @@ window.VFS_I18N = {
     "faq.a4": "Có. Đội ngũ HLV sở hữu chứng chỉ quốc tế như NCSF, Poliquin và chứng nhận của Liên đoàn Cử tạ – Thể hình Việt Nam.",
     "faq.q5": "Tôi không ở TP.HCM có tập được không?",
     "faq.a5": "Được. Nếu bạn không ở TP.HCM, bạn có thể tập cùng chúng tôi qua chương trình coaching online 1:1: lộ trình tập luyện và dinh dưỡng cá nhân hoá, được Vinh theo dõi định kỳ. <br><a href=\"#apply\" class=\"btn btn--gold btn--sm faq__cta\" data-apply>Đăng ký coaching online 1:1</a>",
-    "faq.q6": "Có buổi tập thử không? Chính sách huỷ gói thế nào?",
-    "faq.a6": "<span class=\"ph\">[PLACEHOLDER: chính sách tập thử & huỷ / bảo lưu gói]</span>",
 
     "contact.eyebrow": "Bắt đầu ngay",
     "contact.title": "Bước đầu tiên<br>chỉ mất 2 phút.",

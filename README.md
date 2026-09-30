@@ -19,7 +19,10 @@ Then open http://localhost:5173. To deploy, upload the folder to any static host
 | `js/i18n.js` | **All page text**, in `en` and `vi`. Each key matches a `data-i18n` attribute in `index.html`. |
 | `js/content.js` | Coaches, case studies, transformation photos, membership plans and perks. |
 | `css/styles.css` | Colors and fonts are in `:root` at the top (`--gold`, `--bg`, `--font`…). |
-| `js/main.js` | Behavior. `FORM_ENDPOINT` and `DEFAULT_LANG` are at the top. |
+| `js/main.js` | Behavior. `DEFAULT_LANG` is at the top. |
+| `js/leads.js` | Where form submissions go (`LEADS_ENDPOINT`). |
+| `js/apply.js` | Coaching application popup: questions and copy. |
+| `apps-script/` | Google Sheet script for leads + team alerts. |
 | `assets/img/` | Photos, grouped by `brand/`, `coaches/`, `results/`, `gallery/`, `meals/`. |
 
 ## Language
@@ -28,12 +31,13 @@ Then open http://localhost:5173. To deploy, upload the folder to any static host
 - The VI / EN toggle in the top-right corner switches language at any time.
 - Clear site data to see the popup again.
 
-## Still to fill in
+## Leads → Google Sheet
 
-1. **Lead form backend.** Set `FORM_ENDPOINT` in `js/main.js` (e.g. Formspree or a Google Apps Script webhook). Until then, submitting the form opens a pre-filled email to `vophucvinh582@gmail.com`. Every field is required, and the country list shows United States and Vietnam first.
-2. **Coaching application backend.** Set `APPLY_ENDPOINT` in `js/apply.js`. Until then, a submitted application opens a pre-filled email with all answers to `vophucvinh582@gmail.com`.
-3. **FAQ 6.** The trial & cancellation policy is still a placeholder (gold dashed box). Search `PLACEHOLDER` in `js/i18n.js`.
-4. **Case studies (optional).** The featured cards show name + photo. Add `goal`, `before`, `after` and `change` to an entry in `js/content.js` to show the stats row.
+Both forms (the coaching application and the contact form) send to one Google Apps Script web app. It writes each lead to the **Website Leads** tab of the *Vinfinity Systems* sheet and alerts the team. Setup is in [`apps-script/README.md`](apps-script/README.md). Once deployed, paste the web-app URL into `LEADS_ENDPOINT` in `js/leads.js`.
+
+Until then, submitting either form opens a pre-filled email to `vophucvinh582@gmail.com`.
+
+Each lead also carries ad attribution: the `utm_*` tags and landing page from the visitor's first page view.
 
 ## Content sources
 
@@ -45,10 +49,10 @@ Then open http://localhost:5173. To deploy, upload the folder to any static host
 
 A popup application form with one question at a time (the same questions as the Tally form), in both languages:
 
-- Opens from any element with `data-apply` (the Online Coaching card and FAQ 5) or from a link ending in `#apply`, e.g. `https://bandit-an.github.io/vinh/#apply`. Use that link in ads or a future VSL page.
+- Opens from any element with `data-apply` (the Online Coaching card and the out-of-town FAQ) or from a link ending in `#apply`, e.g. `https://bandit-an.github.io/vinh/#apply`. Use that link in ads or a future VSL page.
 - Single-choice answers advance automatically. Keys A–F pick an option, and Ctrl/⌘+Enter continues from a text answer.
 - Progress is saved in the browser, so closing and reopening resumes where the visitor left off.
-- Edit questions and copy in `APPLY_STEPS` / `UI` at the top of `js/apply.js`.
+- Edit questions and copy in `APPLY_STEPS` / `UI` at the top of `js/apply.js`. Submissions go to the sheet (see above).
 
 ## Sharing a specific language
 

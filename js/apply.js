@@ -6,10 +6,7 @@
 (function () {
   "use strict";
 
-  // Paste a form endpoint (Formspree, Google Apps Script, CRM webhook…) to receive applications.
-  // While empty, submitting opens a pre-filled email to APPLY_EMAIL.
-  const APPLY_ENDPOINT = "";
-  const APPLY_EMAIL = "vophucvinh582@gmail.com";
+  // Submissions go to the Google Sheet via js/leads.js
   const DRAFT_KEY = "vfs-apply-draft";
 
   /* ---------- Copy ---------- */
@@ -319,28 +316,31 @@
     const btn = body.querySelector(".apply__next");
     btn.disabled = true;
     btn.textContent = u("sending");
-    const payload = { ...answers, ...answers.contact, lang: lang(), submittedAt: new Date().toISOString() };
-    delete payload.contact;
-
-    if (APPLY_ENDPOINT) {
-      try {
-        const res = await fetch(APPLY_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(payload)
-        });
-        if (!res.ok) throw new Error(res.status);
-      } catch (err) {
-        btn.disabled = false;
-        btn.textContent = u("submit");
-        return showErr(u("error"));
-      }
-    } else {
-      const lines = APPLY_STEPS.filter((s) => s.type !== "contact")
-        .map((s) => `${s.q.en}\n→ ${s.type === "agree" ? "Agreed" : answers[s.id]}`);
-      const c = answers.contact;
-      const text = `Name: ${c.firstName} ${c.lastName}\nEmail: ${c.email}\nPhone: ${c.phone}\n\n${lines.join("\n\n")}`;
-      window.location.href = `mailto:${APPLY_EMAIL}?subject=${encodeURIComponent("Coaching application — " + c.firstName + " " + c.lastName)}&body=${encodeURIComponent(text)}`;
+    const c = answers.contact;
+    try {
+      await window.VFSLeads.send("application", {
+        full_name: `${c.firstName} ${c.lastName}`.trim(),
+        first_name: c.firstName,
+        last_name: c.lastName,
+        email: c.email,
+        phone: c.phone,
+        country: answers.country,
+        experience: answers.experience,
+        goal: answers.goal,
+        days_per_week: answers.days,
+        struggle: answers.struggle,
+        routine: answers.routine,
+        why_vinh: answers.whyVinh,
+        goal_6_12_months: answers.achieve,
+        start_timeline: answers.start,
+        investment_ready: answers.invest,
+        acknowledged: answers.acknowledge ? "Yes" : "No",
+        service: "1-on-1 Online Coaching"
+      });
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = u("submit");
+      return showErr(u("error"));
     }
     store.clear();
     go(N + 1);

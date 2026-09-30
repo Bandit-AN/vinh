@@ -5,10 +5,7 @@
   "use strict";
 
   /* ---------- Settings ---------- */
-  // Paste a form endpoint (Formspree, Google Apps Script, CRM webhook…) to receive leads.
-  // While empty, the form falls back to opening a pre-filled email to CONTACT_EMAIL.
-  const FORM_ENDPOINT = "";
-  const CONTACT_EMAIL = "vophucvinh582@gmail.com";
+  // Where leads go is set in js/leads.js
   const DEFAULT_LANG = "vi";
   const LANG_KEY = "vfs-lang";
 
@@ -269,30 +266,28 @@
   const form = $("#leadForm");
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const bad = $$("input, select", form).filter((f) => !f.value.trim() || !f.checkValidity());
-    $$("input, select", form).forEach((f) => f.classList.toggle("is-invalid", bad.includes(f)));
+    const fields = $$("[required]", form);
+    const bad = fields.filter((f) => !f.value.trim() || !f.checkValidity());
+    fields.forEach((f) => f.classList.toggle("is-invalid", bad.includes(f)));
     if (bad.length) { bad[0].focus(); return; }
 
-    const data = Object.fromEntries(new FormData(form));
-    data.serviceLabel = $("#serviceSelect").selectedOptions[0].textContent;
-    data.countryLabel = $("#countrySelect").selectedOptions[0].textContent;
-    data.lang = lang;
-
-    if (FORM_ENDPOINT) {
-      try {
-        const res = await fetch(FORM_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(data)
-        });
-        if (!res.ok) throw new Error(res.status);
-      } catch (err) {
-        alert(lang === "vi" ? "Gửi không thành công. Vui lòng gọi 0898 462 618." : "Something went wrong. Please call 0898 462 618.");
-        return;
-      }
-    } else {
-      const body = `Name: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nCountry: ${data.countryLabel}\nService: ${data.serviceLabel}`;
-      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Website enquiry — " + data.name)}&body=${encodeURIComponent(body)}`;
+    const f = Object.fromEntries(new FormData(form));
+    const btn = $("button[type=submit]", form);
+    btn.disabled = true;
+    try {
+      await window.VFSLeads.send("contact", {
+        full_name: f.name.trim(),
+        phone: f.phone.trim(),
+        email: f.email.trim(),
+        country: $("#countrySelect").selectedOptions[0].textContent,
+        service: $("#serviceSelect").selectedOptions[0].textContent,
+        website: f.website // honeypot — real visitors leave this empty
+      });
+    } catch (err) {
+      alert(lang === "vi" ? "Gửi không thành công. Vui lòng gọi 0898 462 618." : "Something went wrong. Please call 0898 462 618.");
+      return;
+    } finally {
+      btn.disabled = false;
     }
     form.classList.add("is-sent");
     form.reset();
