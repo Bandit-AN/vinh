@@ -7,8 +7,10 @@
   "use strict";
 
   // Google Apps Script web-app URL (see apps-script/README.md).
-  // While empty, forms fall back to opening a pre-filled email to CONTACT_EMAIL.
   const LEADS_ENDPOINT = "";
+  // Which form types go to the sheet. Anything else (or everything, while
+  // LEADS_ENDPOINT is empty) opens a pre-filled email to CONTACT_EMAIL instead.
+  const SHEET_TYPES = ["application"];
   const CONTACT_EMAIL = "vophucvinh582@gmail.com";
   const ATTR_KEY = "vfs-attribution";
 
@@ -42,7 +44,7 @@
       submitted_at: new Date().toISOString()
     };
 
-    if (!LEADS_ENDPOINT) {
+    if (!LEADS_ENDPOINT || !SHEET_TYPES.includes(type)) {
       const body = Object.entries(payload).map(([k, v]) => `${k}: ${v}`).join("\n");
       const name = data.full_name || `${data.first_name || ""} ${data.last_name || ""}`.trim();
       window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`New ${type} — ${name}`)}&body=${encodeURIComponent(body)}`;

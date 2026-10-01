@@ -22,7 +22,7 @@ Then open http://localhost:5173. To deploy, upload the folder to any static host
 | `js/main.js` | Behavior. `DEFAULT_LANG` is at the top. |
 | `js/leads.js` | Where form submissions go (`LEADS_ENDPOINT`). |
 | `js/apply.js` | Coaching application popup: questions and copy. |
-| `apps-script/` | Google Sheet script for leads + team alerts. |
+| `apps-script/` | Google Sheet script: coaching applications → sheet tab + Telegram alert. |
 | `assets/img/` | Photos, grouped by `brand/`, `coaches/`, `results/`, `gallery/`, `meals/`. |
 
 ## Language
@@ -31,13 +31,13 @@ Then open http://localhost:5173. To deploy, upload the folder to any static host
 - The VI / EN toggle in the top-right corner switches language at any time.
 - Clear site data to see the popup again.
 
-## Leads → Google Sheet
+## Leads → Google Sheet + Telegram
 
-Both forms (the coaching application and the contact form) send to one Google Apps Script web app. It writes each lead to the **Website Leads** tab of the *Vinfinity Systems* sheet and alerts the team. Setup is in [`apps-script/README.md`](apps-script/README.md). Once deployed, paste the web-app URL into `LEADS_ENDPOINT` in `js/leads.js`.
+**Coaching applications** go to a Google Apps Script attached to the *Vinfinity Systems* sheet. It writes each one to the **1-1 Coaching Applications** tab and posts an alert to the team's Telegram group. Setup is in [`apps-script/README.md`](apps-script/README.md). Once deployed, paste the web-app URL into `LEADS_ENDPOINT` in `js/leads.js`.
 
-Until then, submitting either form opens a pre-filled email to `vophucvinh582@gmail.com`.
+The **contact form** ("Claim your member offer") still opens a pre-filled email to `vophucvinh582@gmail.com`. To log it too, add `"contact"` to `SHEET_TYPES` in `js/leads.js` and remove the `lead_type` check in `doPost` in `Code.gs`.
 
-Each lead also carries ad attribution: the `utm_*` tags and landing page from the visitor's first page view.
+Each submission also carries ad attribution: the `utm_*` tags and landing page from the visitor's first page view.
 
 ## Content sources
 
