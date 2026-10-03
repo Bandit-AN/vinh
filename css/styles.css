@@ -449,6 +449,51 @@ h3 { font-size: 22px; letter-spacing: -0.01em; }
   .apply__fields { grid-template-columns: minmax(0, 1fr); }
 }
 
+/* ---------- VSL landing page (coaching.html) ---------- */
+.vsl-page .nav { position: sticky; top: 0; }
+.vsl-hero { padding: clamp(36px, 6vw, 72px) 0 clamp(56px, 8vw, 96px); text-align: center; background: radial-gradient(ellipse at 50% 0%, rgba(201, 164, 92, 0.14), transparent 60%); }
+.vsl-hero__inner { max-width: 960px; }
+.vsl-eyebrow { justify-content: center; }
+.vsl-eyebrow::before { display: none; }
+.vsl-title { font-size: clamp(32px, 5.4vw, 64px); text-transform: none; letter-spacing: -0.03em; line-height: 1.1; max-width: 20ch; margin: 0 auto; }
+.vsl-sub { margin: 20px auto 36px; max-width: 58ch; }
+.vsl-video { position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius-lg); overflow: hidden; background: #000; border: 1px solid var(--line); box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.8); }
+.vsl-video iframe, .vsl-video video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.vsl-video__ph { position: absolute; inset: 0; display: grid; place-items: center; }
+.vsl-video__ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.35; filter: grayscale(0.4); }
+.vsl-play { position: relative; width: 84px; height: 84px; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: #111; font-size: 30px; padding-left: 6px; box-shadow: 0 0 0 12px rgba(201, 164, 92, 0.2); }
+.vsl-video__ph .ph { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+.vsl-cta { margin-top: 32px; display: grid; justify-items: center; gap: 10px; }
+.vsl-cta p { margin: 0; color: var(--muted); font-size: 14px; }
+.vsl-cta__btn { min-height: 60px; padding: 0 44px; font-size: 16px; }
+.vsl-cta--inline { margin-top: 48px; }
+.vsl-proof { list-style: none; padding: 0; margin: 44px 0 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 40px; }
+.vsl-proof li { color: var(--muted); font-size: 14px; }
+.vsl-proof strong { color: var(--text); font-size: 18px; margin-right: 6px; }
+.vsl-results { columns: 3; column-gap: 16px; }
+.vsl-result { display: block; width: 100%; margin: 0 0 16px; padding: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #000; cursor: zoom-in; break-inside: avoid; transition: border-color 0.2s, transform 0.3s var(--ease); }
+.vsl-result:hover { border-color: var(--gold); transform: translateY(-3px); }
+.vsl-result img { width: 100%; height: auto; }
+.vsl-steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.vsl-steps li { padding: 32px 28px; border-radius: var(--radius-lg); background: var(--bg-3); border: 1px solid var(--line); }
+.vsl-steps span { display: block; color: var(--gold); font-weight: 800; font-size: 14px; letter-spacing: 0.18em; margin-bottom: 18px; }
+.vsl-steps h3 { margin-bottom: 10px; }
+.vsl-steps p { margin: 0; color: var(--muted); font-size: 15px; }
+.vsl-final { text-align: center; background: radial-gradient(ellipse at 50% 100%, rgba(201, 164, 92, 0.14), transparent 60%); }
+.vsl-final .lead { margin: 18px auto 32px; }
+.vsl-disclaimer { margin: 28px auto 0; max-width: 60ch; font-size: 12px; color: var(--muted); }
+.vsl-mobile-cta { grid-template-columns: 1fr !important; }
+@media (max-width: 900px) {
+  .vsl-results { columns: 2; column-gap: 12px; }
+  .vsl-result { margin-bottom: 12px; }
+  .vsl-steps { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .vsl-cta__btn { width: 100%; }
+  .vsl-play { width: 64px; height: 64px; font-size: 24px; }
+  .vsl-proof { flex-direction: column; align-items: center; gap: 8px; }
+}
+
 /* ---------- Reveal on scroll ---------- */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
 .reveal.is-in { opacity: 1; transform: none; }

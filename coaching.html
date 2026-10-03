@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>1-on-1 Online Coaching with Vinh — VFS Private Training</title>
+  <meta name="description" content="Get coached 1-on-1 by Vinh, wherever you live. Personalized training and nutrition from the coach behind 200+ transformations." />
+  <meta name="theme-color" content="#0b0b0c" />
+  <meta property="og:title" content="1-on-1 Online Coaching with Vinh" />
+  <meta property="og:description" content="Personalized training and nutrition from the coach behind 200+ transformations." />
+  <meta property="og:image" content="assets/img/results/huu-tinh.jpg" />
+  <link rel="icon" href="assets/img/brand/logo-footer.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="vsl-page">
+
+  <!-- Minimal header: no menu, one action -->
+  <header class="nav is-scrolled">
+    <div class="wrap nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="VFS Private Training">
+        <img src="assets/img/brand/logo.png" alt="VFS Private Training" />
+      </a>
+      <div class="nav__right">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button data-set-lang="vi" aria-label="Tiếng Việt">VI</button>
+          <button data-set-lang="en" aria-label="English">EN</button>
+        </div>
+        <a href="#apply" class="btn btn--gold btn--sm" data-apply data-i18n="cta.short">Apply</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HEADLINE + VSL ============ -->
+    <section class="vsl-hero">
+      <div class="wrap vsl-hero__inner">
+        <p class="eyebrow vsl-eyebrow" data-i18n="hero.eyebrow">1-on-1 online coaching with Vinh</p>
+        <h1 class="vsl-title" data-i18n-html="hero.title"></h1>
+        <p class="lead vsl-sub" data-i18n="hero.sub"></p>
+
+        <!-- VSL: set VSL_YOUTUBE_ID (or VSL_VIDEO_URL) at the top of js/coaching.js -->
+        <div class="vsl-video" id="vsl">
+          <div class="vsl-video__ph">
+            <img src="assets/img/gallery/stage-1.jpg" alt="" />
+            <span class="vsl-play" aria-hidden="true">▶</span>
+            <span class="ph" data-i18n="vsl.ph">[VSL video goes here]</span>
+          </div>
+        </div>
+
+        <div class="vsl-cta">
+          <a href="#apply" class="btn btn--gold vsl-cta__btn" data-apply data-i18n="cta.main">Apply for 1-on-1 coaching</a>
+          <p data-i18n="cta.note">12 questions · about 3 minutes</p>
+        </div>
+
+        <ul class="vsl-proof">
+          <li><strong>200+</strong> <span data-i18n="proof.members">members transformed</span></li>
+          <li><strong>100%</strong> <span data-i18n="proof.custom">personalized training & nutrition</span></li>
+          <li><strong>NCSF · Poliquin</strong> <span data-i18n="proof.certs">certified coaching team</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ RESULTS PROOF ============ -->
+    <section class="section section--alt" id="results">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow" data-i18n="res.eyebrow">Client results</p>
+            <h2 data-i18n-html="res.title"></h2>
+            <p class="lead" data-i18n="res.lead"></p>
+          </div>
+        </div>
+        <!-- Photos listed in RESULTS at the top of js/coaching.js -->
+        <div class="vsl-results" id="vslResults"></div>
+        <div class="vsl-cta vsl-cta--inline">
+          <a href="#apply" class="btn btn--gold vsl-cta__btn" data-apply data-i18n="cta.results">I want results like these</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT VINH ============ -->
+    <section class="section">
+      <div class="wrap intro">
+        <div class="intro__media">
+          <img src="assets/img/gallery/founder.jpg" alt="Võ Phúc Vinh, founder of VFS Private Training" />
+          <div class="intro__tag">
+            <strong>Võ Phúc Vinh</strong>
+            <span data-i18n="about.role">Founder & CEO</span>
+          </div>
+        </div>
+        <div>
+          <p class="eyebrow" data-i18n="about.eyebrow">Your coach</p>
+          <h2 data-i18n-html="about.title"></h2>
+          <p class="lead" style="margin:24px 0" data-i18n="about.body"></p>
+          <a href="#apply" class="btn btn--gold" data-apply data-i18n="cta.main">Apply for 1-on-1 coaching</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="section section--alt">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow" data-i18n="how.eyebrow">How it works</p>
+            <h2 data-i18n="how.title">Three steps to start</h2>
+          </div>
+        </div>
+        <ol class="vsl-steps">
+          <li><span>01</span><h3 data-i18n="how.1t"></h3><p data-i18n="how.1"></p></li>
+          <li><span>02</span><h3 data-i18n="how.2t"></h3><p data-i18n="how.2"></p></li>
+          <li><span>03</span><h3 data-i18n="how.3t"></h3><p data-i18n="how.3"></p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="section vsl-final">
+      <div class="wrap">
+        <h2 data-i18n-html="final.title"></h2>
+        <p class="lead" data-i18n="final.sub"></p>
+        <a href="#apply" class="btn btn--gold vsl-cta__btn" data-apply data-i18n="cta.main">Apply for 1-on-1 coaching</a>
+        <p class="vsl-disclaimer" data-i18n="final.disclaimer"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__bottom" style="margin-top:0;border-top:0;padding-top:0">
+      <span>© <span id="year"></span> VFS Private Training · 64B3 Bà Hom, Q.6, TP.HCM</span>
+      <span><a href="index.html" data-i18n="footer.site">Visit the main website</a> · <a href="https://www.instagram.com/vinfinityfitnessstudio/" target="_blank" rel="noopener">Instagram</a></span>
+    </div>
+  </footer>
+
+  <!-- Sticky apply bar (mobile) -->
+  <div class="mobile-cta vsl-mobile-cta" id="mobileCta">
+    <a href="#apply" class="btn btn--gold" data-apply data-i18n="cta.main">Apply for 1-on-1 coaching</a>
+  </div>
+
+  <!-- Coaching application popup (shared with the main site) -->
+  <div class="apply" id="applyModal" role="dialog" aria-modal="true" aria-labelledby="applyQ" aria-hidden="true">
+    <div class="apply__card">
+      <div class="apply__progress" aria-hidden="true"><span></span></div>
+      <button class="apply__close" aria-label="Close">×</button>
+      <div class="apply__body"></div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__btn lightbox__close" aria-label="Close">×</button>
+    <button class="lightbox__btn lightbox__prev" aria-label="Previous">‹</button>
+    <img alt="" />
+    <button class="lightbox__btn lightbox__next" aria-label="Next">›</button>
+  </div>
+
+  <script src="js/leads.js"></script>
+  <script src="js/coaching.js"></script>
+  <script src="js/apply.js"></script>
+</body>
+</html>

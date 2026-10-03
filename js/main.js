@@ -97,8 +97,18 @@
   const MENU_PREVIEW = 12;
   let menuCat = "all";
   let menuOpen = false;
+  // "All" tab: take one dish from each category in turn, so similar-looking dishes
+  // (5 fish cakes, 3 sous-vide chicken…) don't sit next to each other.
+  function mixedMenu() {
+    const groups = {};
+    DATA.meals.forEach((m) => (groups[m.cat] = groups[m.cat] || []).push(m));
+    const lists = Object.values(groups);
+    const out = [];
+    for (let i = 0; out.length < DATA.meals.length; i++) lists.forEach((l) => l[i] && out.push(l[i]));
+    return out;
+  }
   function renderMeals() {
-    const items = DATA.meals.filter((m) => menuCat === "all" || m.cat === menuCat);
+    const items = menuCat === "all" ? mixedMenu() : DATA.meals.filter((m) => m.cat === menuCat);
     const shown = menuOpen || menuCat !== "all" ? items : items.slice(0, MENU_PREVIEW);
     $("#menuGrid").innerHTML = shown.map((m) => `
       <figure class="dish">
